@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #222;
+  height: 100px;
+  padding-top: 5%;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+.App-title:visited { text-decoration: none; }
+.App-title:hover { text-decoration: none; }
+.App-title:focus { text-decoration: none; }
+.App-title:hover, a:active { text-decoration: none; }
+
+.App-intro {
+  font-size: large;
+}
+
+.moviePoster {
+  height: 150px;
+  width: 100px;
+}
+
+.center-me {
+  margin: 0 auto;
+}
+
+.storylineColumn {
+  width: 250px;
+}
