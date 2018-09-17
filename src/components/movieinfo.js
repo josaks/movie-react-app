@@ -28,8 +28,8 @@ const MovieInfo = ({ movie }) => {
         <ColumnDefinition id='genres' title='Genres' />
         <ColumnDefinition id='ratings' title='Ratings' />
         <ColumnDefinition id='contentRating' title='Content rating' />
-        <ColumnDefinition id='duration' title='Duration' customComponent={DurationCell} />
-        <ColumnDefinition id='releaseDate' title='Release date' customComponent={ReleaseDateCell} />
+        <ColumnDefinition id='duration' title='Duration' />
+        <ColumnDefinition id='releaseDate' title='Release date' />
         <ColumnDefinition id='averageRating' title='Average rating' />
         <ColumnDefinition id='originalTitle' title='Original title' />
         <ColumnDefinition id='storyline' title='Storyline' cssClassName="storylineColumn"/>
