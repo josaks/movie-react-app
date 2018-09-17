@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Griddle, { plugins, RowDefinition, ColumnDefinition } from 'griddle-react';
 import axios from 'axios';
-import PosterColumn from './postercolumn';
+import PosterColumn from './postercell';
 
 export default class Home extends Component {
   constructor(props){
