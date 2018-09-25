@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import MovieInfo from './movieinfo';
+import Comments from "./comments";
+import CommentForm from './commentform';
+import { myAPIAxios } from "../myapi";
+import Rating from './rating';
 
 export default class MovieDetails extends Component {
   constructor(props){
     super(props);
     this.state={
-      movie: {title: "loading"},
+      movie: {title: "loading", comments: []},
     }
   }
 
@@ -16,12 +19,11 @@ export default class MovieDetails extends Component {
   }
 
   getMovie = async (id) => {
-    const baseurl = "http://themovieapi.azurewebsites.net/api";
-    await axios.get(baseurl + '/movies/' + id).then(res => {
+    await myAPIAxios.get('movie/' + id).then(res => {
       this.setState({
         movie: res.data,
-        isLoading: true,
       });
+      console.log(res.data.comments)
     }).catch(error => {
       console.error(error);
     });
@@ -33,6 +35,13 @@ export default class MovieDetails extends Component {
     return (
       <div>
         <MovieInfo movie={movie} />
+        <div className="ratingContainer">
+          <Rating movie={movie} />
+        </div>
+        <div className="commentSection">
+          <Comments comments={movie.comments} />
+          <CommentForm movieId={movie.id} />
+        </div>
       </div>
     );
   }

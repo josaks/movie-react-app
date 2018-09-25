@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Griddle, { plugins, RowDefinition, ColumnDefinition } from 'griddle-react';
-import axios from 'axios';
 import PosterColumn from './postercell';
+import { myAPIAxios } from "../myapi";
 
 export default class Home extends Component {
   constructor(props){
@@ -16,8 +16,7 @@ export default class Home extends Component {
   }
 
   getMovies = async () => {
-    const baseurl = "http://themovieapi.azurewebsites.net/api";
-    await axios.get(baseurl + '/movies').then(res => {
+    await myAPIAxios.get('movies').then(res => {
       this.setState({
         movies: res.data,
       });

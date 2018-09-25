@@ -33,3 +33,22 @@
 .storylineColumn {
   width: 250px;
 }
+
+.commentSection {
+  display: block;
+}
+
+.comments {
+  float: none;
+}
+
+.rate {
+  width: 100%;
+}
+.ratingContainer {
+  width: 10%;
+}
+
+.commentForm {
+  float:left;
+}
