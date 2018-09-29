@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 import { myAPIAxios } from '../myapi';
-
+import { authContext, loggedIn, login, getDecodedToken } from '../authentication';
+import Button from '@material-ui/core/Button';
 
 const option = (value, label) => ({ value, label });
 
@@ -26,13 +27,20 @@ class Rating extends Component{
     }
   }
 
+  onClick = () => {
+    this.onSubmit();
+  }
+
   onSubmit = async () => {
     const { value } = this.state.selectedOption;
     const { id } = this.props.movie;
+    const { email } = getDecodedToken();
 
     await myAPIAxios.post('rate/', {
       Value: value,
       MovieId: id,
+      Username: email,
+      Date: new Date(),
     }).catch(error => {
       console.error(error);
     });
@@ -51,10 +59,11 @@ class Rating extends Component{
           value={selectedOption}
           onChange={this.handleChange}
           options={options}
+          maxMenuHeight={120}
         />
-        <button onClick={this.onSubmit}>
+        <Button variant="outlined" color="primary" onClick={this.onClick}>
           Rate movie
-        </button>
+        </Button>
       </div>
     );
   }

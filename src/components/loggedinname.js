@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { myAPIAxios } from '../myapi';
-import { getToken, authContext } from '../authentication';
+import { authContext, loggedIn } from '../authentication';
+import LogoutButton from './logoutbutton';
+
 
 class LoggedInName extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "Not logged in",
-      loggedIn: false,
     };
   }
 
@@ -19,25 +20,17 @@ class LoggedInName extends Component {
     await myAPIAxios.get('name').then(res => {
       this.setState({
         name: res.data,
-        loggedIn: true,
       });
     });
   }
 
-  logout = () => authContext.logOut();
-
   render() {
-    const { name, loggedIn } = this.state;
+    const { name } = this.state;
 
     return (
       <div>
-        {
-          loggedIn &&
-          <div>
-            <div>Username: {name}</div>
-            <div onClick={this.logout}>Log out</div>
-          </div>
-        }
+        <div>Username: {name}</div>
+        <LogoutButton />
       </div>
     );
   }

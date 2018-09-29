@@ -2,20 +2,19 @@
   text-align: center;
 }
 
-.App-header {
-  background-color: #222;
-  height: 100px;
-  padding-top: 5%;
-  color: white;
+.App-header a:link,
+.App-header a:visited,
+.App-header a:hover,
+.App-header a:active
+{
+  text-decoration: none;
+  color: inherit;
 }
 
 .App-title {
   font-size: 1.5em;
+  display: inline-block;
 }
-.App-title:visited { text-decoration: none; }
-.App-title:hover { text-decoration: none; }
-.App-title:focus { text-decoration: none; }
-.App-title:hover, a:active { text-decoration: none; }
 
 .App-intro {
   font-size: large;
@@ -35,20 +34,53 @@
 }
 
 .commentSection {
-  display: block;
-}
-
-.comments {
-  float: none;
 }
 
 .rate {
   width: 100%;
 }
+
 .ratingContainer {
   width: 10%;
 }
 
 .commentForm {
   float:left;
+}
+
+.loginout {
+  margin-left: auto;
+}
+
+.center {
+  margin:auto;
+}
+
+.movieinfo {
+}
+
+.moviecard {
+  display: flex;
+  flex-direction: row;
+}
+
+.commentcard {
+  display: flex;
+  flex-direction: row;
+}
+
+.commentAuthor {
+  margin-left: auto;
+}
+
+.details,
+.genresAndActors {
+  flex-direction: row;
+  display: flex;
+}
+
+.verticalCenter {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }

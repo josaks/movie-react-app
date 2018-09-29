@@ -3,13 +3,20 @@ import MovieInfo from './movieinfo';
 import Comments from "./comments";
 import CommentForm from './commentform';
 import { myAPIAxios } from "../myapi";
-import Rating from './rating';
+import Moviecard from './moviecard';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 export default class MovieDetails extends Component {
   constructor(props){
     super(props);
     this.state={
-      movie: {title: "loading", comments: []},
+      movie: {
+        title: "loading",
+        comments: [],
+        genres: [],
+        actors: []
+      },
     }
   }
 
@@ -23,7 +30,6 @@ export default class MovieDetails extends Component {
       this.setState({
         movie: res.data,
       });
-      console.log(res.data.comments)
     }).catch(error => {
       console.error(error);
     });
@@ -31,17 +37,24 @@ export default class MovieDetails extends Component {
 
   render() {
     const { movie } = this.state;
+    const { genres, actors } = movie;
 
     return (
       <div>
-        <MovieInfo movie={movie} />
-        <div className="ratingContainer">
-          <Rating movie={movie} />
+        <Moviecard movie={movie} />
+        <div className="details">
+          <Card className="genresAndActors">
+            <CardContent className="verticalCenter">
+              {genres.toString()}
+            </CardContent>
+            <CardContent className="verticalCenter">
+              {actors.toString()}
+            </CardContent>
+          </Card>
+          <MovieInfo movie={movie} />
         </div>
-        <div className="commentSection">
-          <Comments comments={movie.comments} />
-          <CommentForm movieId={movie.id} />
-        </div>
+        <Comments comments={movie.comments} />
+        <CommentForm movieId={movie.id} />
       </div>
     );
   }

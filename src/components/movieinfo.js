@@ -3,6 +3,9 @@ import Griddle, { plugins, RowDefinition, ColumnDefinition } from 'griddle-react
 import PosterCell from './postercell';
 import ReleaseDateCell from './releasedatecell';
 import DurationCell from './durationcell';
+import Rating from './rating';
+import Spacedcell from './spacedcell';
+
 
 const MovieInfo = ({ movie }) => {
   if(movie == null){
@@ -22,18 +25,13 @@ const MovieInfo = ({ movie }) => {
       components={{Layout: GriddleLayout}}
     >
       <RowDefinition>
-        <ColumnDefinition id='posterURL' title='Poster' customComponent={PosterCell} />
-        <ColumnDefinition id='title' title='Title' />
         <ColumnDefinition id='year' title='Year released' />
-        <ColumnDefinition id='genres' title='Genres' />
-        <ColumnDefinition id='ratings' title='Ratings' />
+        <ColumnDefinition id='amountOfRatings' title='Amount of user ratings' />
+        <ColumnDefinition id='averageRating' title='Average rating' />
         <ColumnDefinition id='contentRating' title='Content rating' />
         <ColumnDefinition id='duration' title='Duration' />
         <ColumnDefinition id='releaseDate' title='Release date' />
-        <ColumnDefinition id='averageRating' title='Average rating' />
         <ColumnDefinition id='originalTitle' title='Original title' />
-        <ColumnDefinition id='storyline' title='Storyline' cssClassName="storylineColumn"/>
-        <ColumnDefinition id='actors' title='Actors' />
         <ColumnDefinition id='imdbRating' title='IMDB rating' />
       </RowDefinition>
     </Griddle>

@@ -3,6 +3,7 @@ import { myAPIAxios } from "../myapi";
 import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button';
+import { authContext, loggedIn, login, getDecodedToken } from '../authentication';
 
 class CommentForm extends Component {
   constructor (props) {
@@ -16,22 +17,26 @@ class CommentForm extends Component {
   }
 
   handleChange (event) {
-      this.setState({
-          text: event.target.value,
-      });
+    this.setState({
+        text: event.target.value,
+    });
   }
 
   handleSubmit (event) {
-      this.saveComment();
+    if(!loggedIn()) event.preventDefault();
+    this.saveComment();
   }
 
   saveComment = async () => {
     const { movieId } = this.props;
     const { text } = this.state;
+    const { email } = getDecodedToken();
 
     await myAPIAxios.post('addcomment', {
       movieId: movieId,
       text: text,
+      author: email,
+      Date: new Date(),
     }).catch(error => {
       console.error(error);
     });
@@ -47,7 +52,7 @@ class CommentForm extends Component {
               multiline={true}
               placeholder="Write a comment"
             />
-            <Button type="submit">
+            <Button variant="outlined" color="primary" type="submit">
               Submit
             </Button>
           </form>
@@ -57,9 +62,3 @@ class CommentForm extends Component {
 }
 
 export default CommentForm;
-
-// <form onSubmit={this.handleSubmit}>
-//     <label>Write a comment</label>
-//     <input type="text" value={this.state.inputvalue} onChange={this.handleChange}/>
-//     <input type="submit" value="Submit"/>
-// </form>
