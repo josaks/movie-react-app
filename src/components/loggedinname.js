@@ -4,6 +4,9 @@ import { authContext, loggedIn } from '../authentication';
 import LogoutButton from './logoutbutton';
 
 
+/*
+  Displays a logged in user's name
+*/
 class LoggedInName extends Component {
   constructor(props) {
     super(props);

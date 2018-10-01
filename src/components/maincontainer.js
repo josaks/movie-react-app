@@ -1,10 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from './home';
 import MovieDetails from './moviedetails';
 import Header from './header';
 
 
+/*
+  A container for the application. Handles routing between homepage and
+  details page.
+*/
 export default () => (
   <div>
     <Header />

@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
-import { logout } from '../authentication';
 
 
-const logoutButton = () => {
+/*
+  A button used to log out of the application
+*/
+const logoutButton = ({ logout }) => {
   return(
     <Button onClick={logout} variant="outlined" color="default">
       Log out

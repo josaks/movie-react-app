@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-import Griddle, { plugins, RowDefinition, ColumnDefinition } from 'griddle-react';
-import PosterCell from './postercell';
-import ReleaseDateCell from './releasedatecell';
-import DurationCell from './durationcell';
-import Rating from './rating';
-import Spacedcell from './spacedcell';
+import React from 'react';
+import Griddle, { RowDefinition, ColumnDefinition } from 'griddle-react';
 
 
+/*
+  Table displaying info about a movie
+*/
 const MovieInfo = ({ movie }) => {
   if(movie == null){
     const msg = 'Could not find movie :(';

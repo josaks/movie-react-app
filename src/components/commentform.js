@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { myAPIAxios } from "../myapi";
 import Input from '@material-ui/core/Input';
-import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button';
-import { authContext, loggedIn, login, getDecodedToken } from '../authentication';
+import { loggedIn, getDecodedToken } from '../authentication';
 
+
+/*
+  Represents a form to submit comments
+*/
 class CommentForm extends Component {
   constructor (props) {
       super(props);

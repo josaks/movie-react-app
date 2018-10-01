@@ -1,10 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import PosterCell from './postercell';
+import Poster from './poster';
 import Rating from './rating';
 
+
+/*
+  A card with information about a movie's storyline, title, poster.
+  Also has a button to rate the movie.
+*/
 const moviecard = ({ movie }) => {
   const { storyline, posterURL, title } = movie;
 
@@ -16,7 +21,7 @@ const moviecard = ({ movie }) => {
         </div>
       </CardContent>
       <CardContent>
-        <PosterCell value={posterURL} />
+        <Poster value={posterURL} />
       </CardContent>
       <CardContent className="">
         <Typography variant="headline">{title}</Typography>

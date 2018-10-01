@@ -7,6 +7,10 @@ import Moviecard from './moviecard';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
+
+/*
+  Page that show detailed information about a movie
+*/
 export default class MovieDetails extends Component {
   constructor(props){
     super(props);
@@ -21,7 +25,8 @@ export default class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    const movieId = parseInt(this.props.match.params.number, 10);
+    const parameterId = this.props.match.params.number;
+    const movieId = parseInt(parameterId, 10);
     this.getMovie(movieId);
   }
 

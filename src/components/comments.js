@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-import Griddle, { plugins, RowDefinition, ColumnDefinition } from 'griddle-react';
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Comment from './comment';
 import Typography from '@material-ui/core/Typography';
 
 
+/*
+  Displays a list of comments
+*/
 export default ({ comments }) => (
   <Card>
     <Card className="commentcard">

@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import Griddle, { plugins, RowDefinition, ColumnDefinition } from 'griddle-react';
-import PosterColumn from './postercell';
+import Griddle, { RowDefinition, ColumnDefinition } from 'griddle-react';
+import Poster from './poster';
 import { myAPIAxios } from "../myapi";
 
+
+/*
+  Represents the home page
+*/
 export default class Home extends Component {
   constructor(props){
     super(props);
@@ -40,7 +44,7 @@ export default class Home extends Component {
     return(
       <Griddle data={this.state.movies} components={{Layout: GriddleLayout}}>
         <RowDefinition>
-          <ColumnDefinition id='posterURL' title='Poster' customComponent={PosterColumn} />
+          <ColumnDefinition id='posterURL' title='Poster' customComponent={Poster} />
           <ColumnDefinition id='title' title='Title' />
           <ColumnDefinition id='year' title='Year released' />
           <ColumnDefinition id='averageRating' title='Average rating' />

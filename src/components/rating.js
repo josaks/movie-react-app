@@ -1,30 +1,53 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 import { myAPIAxios } from '../myapi';
-import { authContext, loggedIn, login, getDecodedToken } from '../authentication';
+import { loggedIn, getDecodedToken } from '../authentication';
 import Button from '@material-ui/core/Button';
 
-const option = (value, label) => ({ value, label });
+
+const option = (value) => ({ value, label: `${value}` });
 
 const options = [
-  option(1, "1"),
-  option(2, "2"),
-  option(3, "3"),
-  option(4, "4"),
-  option(5, "5"),
-  option(6, "6"),
-  option(7, "7"),
-  option(8, "8"),
-  option(9, "9"),
-  option(10, "10"),
+  option(1),
+  option(2),
+  option(3),
+  option(4),
+  option(5),
+  option(6),
+  option(7),
+  option(8),
+  option(9),
+  option(10),
 ];
 
+/*
+  Displays a componenet for rating a movie from 1-10 and submitting it
+*/
 class Rating extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      selectedOption: option(1, "1"),
+      selectedOption: options[0],
     }
+  }
+
+  componentDidMount() {
+    if(loggedIn()) this.getRating();
+  }
+
+  getRating = async () => {
+    const { id } = this.props.movie;
+    const { email } = getDecodedToken();
+
+    await myAPIAxios.get('getRating/', {
+      MovieId: id,
+      Username: email,
+    }).then(res => {
+      const { value } = res.data;
+      this.setState({selectedOption: option(value)});
+    }).catch(error => {
+      this.setState({selectedOption: option(1)});
+    });
   }
 
   onClick = () => {

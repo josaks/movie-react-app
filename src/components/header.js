@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import LogInButton from './loginbtn';
-import { loggedIn } from '../authentication';
+import { loggedIn, login, logout } from '../authentication';
 import LogoutButton from './logoutbutton';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
 
 
+/*
+  Represents the header for the application
+*/
 class Header extends Component {
 
   render() {
@@ -21,8 +23,8 @@ class Header extends Component {
               <a href="/">Movies</a>
             </Typography>
             <div className="loginout">
-              {!isLoggedIn && <LogInButton />}
-              {isLoggedIn && <LogoutButton />}
+              {!isLoggedIn && <LogInButton login={login}/>}
+              {isLoggedIn && <LogoutButton logout={logout}/>}
             </div>
           </Toolbar>
         </AppBar>
@@ -32,20 +34,3 @@ class Header extends Component {
 }
 
 export default Header;
-
-
-
-
-
-
-// export default () => (
-//   <header className="App-header">
-//     <a className="limitWidth" href="/">
-//       <h1 className="App-title">Movie react app</h1>
-//     </a>
-//     <div className="logInOutButtons">
-//       { loggedIn() && <LogoutButton /> }
-//       { !loggedIn() && <LogInBtn /> }
-//     </div>
-//   </header>
-// );
