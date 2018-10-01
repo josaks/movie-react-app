@@ -43,9 +43,7 @@ class Rating extends Component{
   }
 
   getRating = (id) => {
-    myAPIAxios.get(`GetRating/${id}/`, {
-      MovieId: id,
-    }).then(res => {
+    myAPIAxios.get(`GetRating/${id}/`).then(res => {
       const { value } = res.data;
       console.log(value);
       if(value !== null) this.setState({selectedOption: option(value)});

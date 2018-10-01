@@ -47,9 +47,8 @@ class CommentForm extends Component {
     const { text } = this.state;
 
     await myAPIAxios.post('addcomment/', {
-      movieId: movieId,
-      text: text,
-      Date: new Date(),
+      MovieId: movieId,
+      Text: text,
     }).catch(error => {
       console.error(error);
     });
