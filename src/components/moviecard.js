@@ -15,7 +15,7 @@ const moviecard = ({ movie }) => {
 
   return(
     <Card className="moviecard">
-      <CardContent className="">
+      <CardContent>
         <div>
           <Rating movie={movie} />
         </div>
@@ -23,7 +23,7 @@ const moviecard = ({ movie }) => {
       <CardContent>
         <Poster value={posterURL} />
       </CardContent>
-      <CardContent className="">
+      <CardContent>
         <Typography variant="headline">{title}</Typography>
         <Typography variant="body2">{storyline}</Typography>
       </CardContent>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 import { myAPIAxios } from '../myapi';
-import { loggedIn, getDecodedToken } from '../authentication';
+import { loggedIn, login } from '../authentication';
 import Button from '@material-ui/core/Button';
 
 
@@ -28,41 +28,49 @@ class Rating extends Component{
     super(props);
     this.state = {
       selectedOption: options[0],
+      isLoaded: false,
     }
   }
 
-  componentDidMount() {
-    if(loggedIn()) this.getRating();
+  componentDidUpdate() {
+    const { id } = this.props.movie;
+    const { isLoaded } = this.state;
+
+    if(id !== undefined && !isLoaded){
+      if(loggedIn()) this.getRating(id);
+      this.setState({ isLoaded: true });
+    }
   }
 
-  getRating = async () => {
-    const { id } = this.props.movie;
-    const { email } = getDecodedToken();
-
-    await myAPIAxios.get('getRating/', {
+  getRating = (id) => {
+    myAPIAxios.get(`GetRating/${id}/`, {
       MovieId: id,
-      Username: email,
     }).then(res => {
       const { value } = res.data;
-      this.setState({selectedOption: option(value)});
+      console.log(value);
+      if(value !== null) this.setState({selectedOption: option(value)});
     }).catch(error => {
       this.setState({selectedOption: option(1)});
     });
   }
 
-  onClick = () => {
-    this.onSubmit();
+  onClick = (event) => {
+    event.preventDefault();
+    if(loggedIn()){
+      this.onSubmit();
+    }
+    else{
+      login();
+    }
   }
 
   onSubmit = async () => {
     const { value } = this.state.selectedOption;
     const { id } = this.props.movie;
-    const { email } = getDecodedToken();
 
     await myAPIAxios.post('rate/', {
       Value: value,
       MovieId: id,
-      Username: email,
       Date: new Date(),
     }).catch(error => {
       console.error(error);

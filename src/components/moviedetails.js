@@ -43,7 +43,7 @@ export default class MovieDetails extends Component {
   render() {
     const { movie } = this.state;
     const { genres, actors } = movie;
-
+    
     return (
       <div>
         <Moviecard movie={movie} />

@@ -22,18 +22,3 @@ export default ({ comments }) => (
     }
   </Card>
 );
-
-// const GriddleLayout = ({ Table, Pagination, Filter, SettingsWrapper }) => (
-//   <div>
-//     <Table />
-//   </div>
-// );
-//
-// return(
-//   <Griddle data={comments} components={{Layout: GriddleLayout}}>
-//     <RowDefinition>
-//       <ColumnDefinition id='text' title="Comment" />
-//       <ColumnDefinition id='author' title="User" />
-//     </RowDefinition>
-//   </Griddle>
-// );
