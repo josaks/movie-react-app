@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from './home';
 import MovieDetails from './moviedetails';
 import Header from './header';
-
+import { BrowserRouter } from 'react-router-dom';
 
 /*
   A container for the application. Handles routing between homepage and
@@ -12,9 +12,11 @@ import Header from './header';
 export default () => (
   <div>
     <Header />
-    <Switch>
-      <Route exact path='/' component={Home}/>
-      <Route path='/movie/:number' component={MovieDetails} />
-    </Switch>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={Home}/>
+        <Route path='/movie/:number' component={MovieDetails} />
+      </Switch>
+    </BrowserRouter>
   </div>
 );
