@@ -33,9 +33,6 @@
   width: 250px;
 }
 
-.commentSection {
-}
-
 .rate {
   width: 100%;
 }
@@ -44,9 +41,8 @@
   width: 10%;
 }
 
-.commentForm {
-  float:left;
-  width: 100%;
+.commentInput {
+  flex: 1;
 }
 
 .loginout {
@@ -57,24 +53,14 @@
   margin:auto;
 }
 
-.movieinfo {
-}
-
-.moviecard {
-  display: flex;
-  flex-direction: row;
-}
-
-.commentcard {
-  display: flex;
-  flex-direction: row;
-}
-
 .commentAuthor {
   margin-left: auto;
 }
 
+.commentForm,
 .details,
+.commentcard,
+.movieintro,
 .genresAndActors {
   flex-direction: row;
   display: flex;

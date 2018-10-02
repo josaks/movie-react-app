@@ -57,20 +57,18 @@ class CommentForm extends Component {
 
   render() {
     return (
-      <div className="commentForm">
-          <form onSubmit={this.handleSubmit}>
-            <Input
-              value={this.state.inputvalue}
-              onChange={this.handleChange}
-              multiline={true}
-              placeholder="Write a comment"
-              fullWidth
-            />
-            <Button variant="outlined" color="primary" type="submit">
-              Submit
-            </Button>
-          </form>
-      </div>
+        <form onSubmit={this.handleSubmit} className="commentForm">
+          <Input
+            value={this.state.inputvalue}
+            onChange={this.handleChange}
+            multiline={true}
+            placeholder="Write a comment"
+            fullWidth
+          />
+          <Button variant="outlined" color="primary" type="submit">
+            Submit
+          </Button>
+        </form>
     );
   }
 }

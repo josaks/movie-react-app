@@ -10,20 +10,20 @@ import Rating from './rating';
   A card with information about a movie's storyline, title, poster.
   Also has a button to rate the movie.
 */
-const moviecard = ({ movie }) => {
+const movieintro = ({ movie }) => {
   const { storyline, posterURL, title } = movie;
 
   return(
-    <Card className="moviecard">
-      <CardContent>
+    <Card className="movieintro">
+      <CardContent className="verticalCenter">
         <div>
           <Rating movie={movie} />
         </div>
       </CardContent>
-      <CardContent>
+      <CardContent className="verticalCenter">
         <Poster value={posterURL} />
       </CardContent>
-      <CardContent>
+      <CardContent className="verticalCenter">
         <Typography variant="headline">{title}</Typography>
         <Typography variant="body2">{storyline}</Typography>
       </CardContent>
@@ -31,4 +31,4 @@ const moviecard = ({ movie }) => {
   );
 };
 
-export default moviecard;
+export default movieintro;

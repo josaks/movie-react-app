@@ -88,7 +88,7 @@ class Rating extends Component{
           value={selectedOption}
           onChange={this.handleChange}
           options={options}
-          maxMenuHeight={120}
+          maxMenuHeight={90}
         />
         <Button variant="outlined" color="primary" onClick={this.onClick}>
           Rate movie
