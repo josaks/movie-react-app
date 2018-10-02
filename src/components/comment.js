@@ -8,7 +8,9 @@ import Typography from '@material-ui/core/Typography';
   Represents one comment
 */
 const comment = ({ comment }) => {
-  const { text, author, date } = comment;
+  const { text, author } = comment;
+  let { date } = comment;
+  date = date.replace("T", " ").split(".")[0];
 
   return (
     <Card className="commentcard">

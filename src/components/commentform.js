@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 import { myAPIAxios } from "../myapi";
 import Button from '@material-ui/core/Button';
-import Form from 'react-validation/build/form';
-import TextArea from 'react-validation/build/textarea';
 import { loggedIn, login } from '../authentication';
-
-
-const required = (value) => {
-  if (!value.toString().trim().length) {
-    return 'Required';
-  }
-};
+import Input from '@material-ui/core/Input';
 
 /*
   Represents a form to submit comments
@@ -32,13 +24,22 @@ class CommentForm extends Component {
     });
   }
 
+  validate = text => {
+    if(text === "") return false;
+    return true;
+  }
+
   handleSubmit (event) {
-    event.preventDefault();
-    if(loggedIn()){
-      this.saveComment();
+    if(!loggedIn()){
+      event.preventDefault();
+      login();
+    }
+    else if(!this.validate(this.state.text)) {
+      event.preventDefault();
+      alert("Can't submit empty comment");
     }
     else{
-      login();
+      this.saveComment();
     }
   }
 
@@ -48,7 +49,7 @@ class CommentForm extends Component {
 
     await myAPIAxios.post('addcomment/', {
       MovieId: movieId,
-      Text: text,
+      text: text,
     }).catch(error => {
       console.error(error);
     });
@@ -57,33 +58,21 @@ class CommentForm extends Component {
   render() {
     return (
       <div className="commentForm">
-          <Form ref={form => { this.form = form}} onSubmit={this.handleSubmit}>
-            <TextArea
-              name="comment"
-              validations={[required]}
+          <form onSubmit={this.handleSubmit}>
+            <Input
+              value={this.state.inputvalue}
+              onChange={this.handleChange}
+              multiline={true}
               placeholder="Write a comment"
+              fullWidth
             />
             <Button variant="outlined" color="primary" type="submit">
               Submit
             </Button>
-          </Form>
+          </form>
       </div>
     );
   }
 }
 
 export default CommentForm;
-
-/*
-<form onSubmit={this.handleSubmit}>
-  <Input
-    value={this.state.inputvalue}
-    onChange={this.handleChange}
-    multiline={true}
-    placeholder="Write a comment"
-  />
-  <Button variant="outlined" color="primary" type="submit">
-    Submit
-  </Button>
-</form>
-*/
