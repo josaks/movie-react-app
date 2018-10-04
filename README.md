@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/josaks/movie-react-app.svg?branch=master)](https://travis-ci.com/josaks/movie-react-app)
+
 How to run this app:  
 Make sure npm is installed: https://www.npmjs.com/get-npm  
 Clone repository  
